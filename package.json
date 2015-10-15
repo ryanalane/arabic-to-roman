@@ -1,0 +1,24 @@
+{
+  "name": "arabic-to-roman",
+  "version": "0.0.1",
+  "description": "A simple program that accepts arabic numerals as input and returns roman numerals as output",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node": "0.12.x",
+    "mocha": ""
+  },
+  "engines": {
+    "node": "0.12.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanalane/arabic-to-roman"
+  },
+  "keywords": [
+    "node"
+  ],
+  "license": "MIT"
+}

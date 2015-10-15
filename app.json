@@ -1,0 +1,5 @@
+{
+  "name": "arabic-to-roman",
+  "description": "A simple server to host static UI files",
+  "keywords": ["node"]
+}
