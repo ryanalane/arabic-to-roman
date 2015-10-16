@@ -7,11 +7,11 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "node": "0.12.x",
+    "node": "4.0.x",
     "mocha": ""
   },
   "engines": {
-    "node": "0.12.x"
+    "node": "4.0.x"
   },
   "repository": {
     "type": "git",
