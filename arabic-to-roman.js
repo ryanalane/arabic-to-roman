@@ -1,4 +1,9 @@
 module.exports = function(arabicNumeral) {
+  if(typeof arabicNumeral !== 'number') {
+    throw new Error("input must be a number");
+  } else if(arabicNumeral < 1) {
+    throw new Error("input must be a non-zero positive number");
+  }
   var arabicToRomanPrimitives = {
     "1": "I",
     "5": "V",
