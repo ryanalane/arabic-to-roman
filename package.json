@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "node": "4.0.x",
-    "mocha": ""
+    "mocha": "2.3.x"
   },
   "engines": {
     "node": "4.0.x"
