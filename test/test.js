@@ -57,10 +57,14 @@ describe("arabicToRoman", function() {
   });
   
   // Input validation
+  var inputValidationErrorMessage = "input must be a non-zero positive integer";
   it("throws error if input is not of type number", function() {
-    assert.throws(function(){arabicToRoman("yes")}, Error, "input must be a number");
+    assert.throws(function(){arabicToRoman("yes")}, Error, inputValidationErrorMessage);
   });
   it("throws error if input is not a non-zero positive number", function() {
-    assert.throws(function(){arabicToRoman(-3)}, Error, "input must be a non-zero positive number");
+    assert.throws(function(){arabicToRoman(-3)}, Error, inputValidationErrorMessage);
+  });
+  it("throws error if input is not an integer", function() {
+    assert.throws(function(){arabicToRoman(2.5)}, Error, inputValidationErrorMessage);
   });
 });
