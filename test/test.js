@@ -43,6 +43,11 @@ describe("arabicToRoman", function() {
   });
 
   // Compound roman primitives
+  it("arabic numerals not multiples of roman primitives > 1 are expressed as compound primitives", function() {
+    assert.equal(arabicToRoman(463), "CDLXIII");
+    assert.equal(arabicToRoman(12), "XII");
+    assert.equal(arabicToRoman(2894), "MMDCCCXCIV");
+  });
   // Numbers greater than 1000 
   // Input validation
 });
