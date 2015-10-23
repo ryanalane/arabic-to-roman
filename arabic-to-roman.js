@@ -16,6 +16,7 @@ module.exports = function(arabicNumeral) {
       return "";
     }
 
+    // Validate and populate needed input variables: arabicNumeral, arabicString, arabicPrimitiveIndex
     var arabicNumeral, arabicString;
 
     if(typeof arabicInput == 'number') {
@@ -27,24 +28,30 @@ module.exports = function(arabicNumeral) {
     }
     arabicPrimitiveIndex = (typeof arabicPrimitiveIndex !== "undefined") ? arabicPrimitiveIndex : 0;
 
-    var i = arabicPrimitiveIndex;
-    for (i; i < arabicPrimitives.length; ++i) {
-      var primitive = arabicPrimitives[i];
+    var highestDigitRomanString, restOfArabicString;
+    if(arabicNumeral >= 4000) {
+       // if number is 4000 or greater, generate the thousands' place purely in terms of repeated 'M's
+      var thousandsMultiple = arabicNumeral / 1000;
+      restOfArabicString = arabicString.substr(-3,3);
+      highestDigitRomanString = arabicToRomanPrimitives["1000"].repeat(thousandsMultiple);
 
-      if(arabicNumeral / primitive >= 1) {
-        break;
+    } else {
+       // if number is less than 4000, generate roman numerals with correct primitive combinations 
+
+      var i = arabicPrimitiveIndex;
+      for (i; i < arabicPrimitives.length; ++i) {
+        var primitive = arabicPrimitives[i];
+
+        if(arabicNumeral / primitive >= 1) {
+          break;
+        }
       }
-    }
 
-    var highestDigit = parseInt(arabicString.charAt(0));
-    var highestDigitRomanString;
-    var restOfArabicString = arabicString.slice(1);
-
-    if(arabicNumeral < 4000) {
-       // if numeral is less than 4000
+      var highestDigit = parseInt(arabicString.charAt(0));
+      restOfArabicString = arabicString.slice(1);
       
       var nextSmallestPrimitive = arabicPrimitives[i + 1] ? arabicPrimitives[i + 1] : -1;
-      var nextLargestPrimitive = arabicPrimitives[i - 1]; // No check needed because numeral has already been checked to be less than 1000 (ie. i > 0)
+      var nextLargestPrimitive = arabicPrimitives[i - 1]; // No check needed because numeral has already been checked to be less than 1000 (ie. arabicPrimitiveIndex > 0)
 
       if(highestDigit == 9) {
           // The arabic numeral must be expressed in the form of "one [lower roman primitive] less than [higher roman primitive]" (ie. 90 => XC) 
@@ -73,11 +80,10 @@ module.exports = function(arabicNumeral) {
         highestDigitRomanString = arabicToRomanPrimitives[primitive.toString()] +
           arabicToRomanPrimitives[nextSmallestPrimitive.toString()].repeat(repeatFactor);
       }
-    } else {
-      // else if numeral is greater than or equal to 1000, and must be expressed in multiples of "M" 
     }
 
     return highestDigitRomanString + generateRoman(restOfArabicString);
+
   };
 
   return generateRoman(arabicNumeral);

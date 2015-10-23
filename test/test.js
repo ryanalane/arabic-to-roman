@@ -48,6 +48,12 @@ describe("arabicToRoman", function() {
     assert.equal(arabicToRoman(12), "XII");
     assert.equal(arabicToRoman(2894), "MMDCCCXCIV");
   });
-  // Numbers greater than 1000 
+  
+  // Numbers greater than 4000 
+  it("roman numerals greater than or equal to 4000 express 1000s in multiples of 'M's", function() {
+    assert.equal(arabicToRoman(4000), "MMMM");
+    assert.equal(arabicToRoman(4063), "MMMMLXIII");
+    assert.equal(arabicToRoman(10512), "MMMMMMMMMMDXII");
+  });
   // Input validation
 });
