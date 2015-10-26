@@ -86,7 +86,7 @@ module.exports = function(arabicNumeral) {
       }
     }
 
-    return highestDigitRomanString + generateRoman(restOfArabicString);
+    return highestDigitRomanString + generateRoman(restOfArabicString, arabicPrimitiveIndex);
 
   };
 
